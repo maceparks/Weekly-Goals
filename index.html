@@ -116,6 +116,254 @@
       gap: 8px;
     }
 
+    /* View Switcher & Trends Button */
+    .view-nav-btn {
+      background: var(--bg-card-sub);
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+      height: 38px;
+      padding: 0 12px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .view-nav-btn:hover {
+      color: #ffffff;
+      border-color: var(--accent);
+      background: var(--border);
+    }
+
+    .view-nav-btn.active {
+      background: var(--accent-muted);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Trends & Analytics Panel */
+    .trends-panel {
+      display: none;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .trends-panel.active {
+      display: flex;
+    }
+
+    .trends-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .trends-header-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .timeframe-pills {
+      display: inline-flex;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .tf-pill {
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      transition: all 0.15s ease;
+    }
+
+    .tf-pill:hover {
+      color: var(--text-main);
+    }
+
+    .tf-pill.active {
+      background: var(--accent);
+      color: var(--accent-contrast);
+    }
+
+    .goal-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .metric-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-card-sub);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+
+    .metric-pill.active {
+      background: #162033;
+      border-color: var(--pill-color, var(--accent));
+      color: #ffffff;
+    }
+
+    .metric-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--pill-color, var(--accent));
+    }
+
+    .chart-wrapper {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      touch-action: pan-y;
+    }
+
+    @media (min-width: 640px) {
+      .chart-wrapper {
+        height: 350px;
+      }
+    }
+
+    #trends-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .chart-hud-tooltip {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(9, 13, 22, 0.94);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 8px 12px;
+      pointer-events: none;
+      font-size: 0.75rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
+      display: none;
+      z-index: 10;
+      min-width: 155px;
+      backdrop-filter: blur(6px);
+    }
+
+    .chart-hud-tooltip.visible {
+      display: block;
+    }
+
+    .tt-week {
+      font-weight: 800;
+      color: #ffffff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      margin-bottom: 5px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.72rem;
+    }
+
+    .tt-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 3px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .tt-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--text-muted);
+    }
+
+    .tt-val {
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .trends-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    @media (min-width: 640px) {
+      .trends-summary-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .trend-stat-box {
+      background: var(--bg-card-sub);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--stat-color, var(--accent));
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .ts-title {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ts-main {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #ffffff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .ts-sub {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
     /* Settings Cog Button */
     .settings-btn {
       background: var(--bg-card-sub);
@@ -546,6 +794,180 @@
       color: #475569;
     }
 
+    /* Bonus Points Section */
+    .bonus-section-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .bonus-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .bonus-title-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bonus-section-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+    }
+
+    .bonus-add-btn {
+      background: var(--accent-muted);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+
+    .bonus-add-btn:hover {
+      background: var(--accent);
+      color: var(--accent-contrast);
+    }
+
+    .bonus-form-box {
+      background: var(--bg-card-sub);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 12px;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .bonus-form-box.open {
+      display: flex;
+    }
+
+    .bonus-form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    @media (min-width: 580px) {
+      .bonus-form-row {
+        grid-template-columns: 2fr 90px 110px;
+      }
+    }
+
+    .bonus-input {
+      background: var(--bg-input);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 8px 10px;
+      color: #ffffff;
+      font-size: 0.82rem;
+      font-family: inherit;
+      outline: none;
+      width: 100%;
+    }
+
+    .bonus-input:focus {
+      border-color: var(--accent);
+    }
+
+    .bonus-presets-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .bonus-preset-chip {
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .bonus-preset-chip:hover {
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .bonus-pills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .bonus-pill-item {
+      background: var(--bg-card-sub);
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      padding: 7px 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      box-shadow: 0 2px 10px var(--accent-muted);
+    }
+
+    .bonus-pill-pts {
+      background: var(--accent);
+      color: var(--accent-contrast);
+      font-weight: 900;
+      font-size: 0.72rem;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .bonus-pill-title {
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .bonus-pill-day {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .bonus-pill-del {
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-size: 1.05rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0 2px;
+      transition: color 0.15s ease;
+    }
+
+    .bonus-pill-del:hover {
+      color: #ef4444;
+    }
+
     /* Modal Structure */
     .modal-overlay {
       position: fixed;
@@ -845,6 +1267,14 @@
         <div class="app-title">Weekly Goals</div>
       </div>
       <div class="header-actions">
+        <!-- Trends / Progress Graph Toggle -->
+        <button class="view-nav-btn" id="trends-toggle-btn" onclick="toggleTrendsView()" title="Progress Graph & Trends">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+            <polyline points="16 7 22 7 22 13"></polyline>
+          </svg>
+          <span>Trends</span>
+        </button>
         <!-- Settings Cog Button -->
         <button class="settings-btn" onclick="openSettingsModal()" title="Settings & Data Vault" aria-label="Settings">
           <svg class="cog-icon" viewBox="0 0 24 24">
@@ -855,7 +1285,7 @@
     </header>
 
     <!-- Week Navigator -->
-    <div class="week-nav">
+    <div class="week-nav" id="tracker-week-nav">
       <button class="week-nav-btn" onclick="shiftWeek(-1)">← Prev</button>
       <div class="week-label" id="week-display-label">Loading week...</div>
       <div style="display: flex; gap: 6px;">
@@ -864,8 +1294,46 @@
       </div>
     </div>
 
+    <!-- Trends & Multi-Month Line Graph View -->
+    <div class="trends-panel" id="trends-panel">
+      <div class="trends-card">
+        <div class="trends-header-row">
+          <div>
+            <div class="hud-title-tag">Long-Term Progression</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: #fff; margin-top: 2px;">Weekly Points Over Time</div>
+          </div>
+          <div class="timeframe-pills" id="timeframe-pills">
+            <button class="tf-pill" data-tf="4" onclick="setTrendsTimeframe('4')">4W</button>
+            <button class="tf-pill active" data-tf="12" onclick="setTrendsTimeframe('12')">12W</button>
+            <button class="tf-pill" data-tf="26" onclick="setTrendsTimeframe('26')">6M</button>
+            <button class="tf-pill" data-tf="ALL" onclick="setTrendsTimeframe('ALL')">ALL</button>
+          </div>
+        </div>
+
+        <!-- Metric Toggle Pills -->
+        <div class="goal-filter-row" id="trends-metric-pills">
+          <!-- Populated dynamically -->
+        </div>
+
+        <!-- Interactive Multi-Series Line Graph -->
+        <div class="chart-wrapper" id="chart-wrapper">
+          <canvas id="trends-canvas"></canvas>
+          <div class="chart-hud-tooltip" id="chart-tooltip"></div>
+        </div>
+
+        <div style="font-size: 0.72rem; color: var(--text-dim); text-align: center; font-family: ui-monospace, monospace;">
+          Tap or hover any week on the graph to inspect points • Tap metric pills above to filter or isolate
+        </div>
+      </div>
+
+      <!-- Summary Averages & Records Strip -->
+      <div class="trends-summary-grid" id="trends-summary-grid">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+
     <!-- Hero Score HUD -->
-        <div class="score-hud">
+        <div class="score-hud" id="tracker-score-hud">
       <div class="hud-left">
         <div class="hud-title-tag">Weekly Discipline Grade</div>
         <div class="hud-grade-row">
@@ -889,6 +1357,52 @@
     <!-- Days Container -->
     <div class="days-list" id="days-container">
       <!-- Injected via JavaScript -->
+    </div>
+
+    <!-- Bonus Points Card -->
+    <div class="bonus-section-card" id="bonus-section-card">
+      <div class="bonus-section-header">
+        <div class="bonus-title-group">
+          <span class="bonus-section-title">Bonus Points</span>
+          <span class="day-pts-sum" id="bonus-total-badge">+0 pts</span>
+        </div>
+        <button type="button" class="bonus-add-btn" onclick="toggleBonusForm()">+ Add Bonus</button>
+      </div>
+
+      <!-- Collapsible Add Bonus Form -->
+      <div class="bonus-form-box" id="bonus-form-box">
+        <div class="bonus-presets-row">
+          <span style="font-size:0.68rem; color:var(--text-dim); font-family:ui-monospace, monospace;">QUICK FILL:</span>
+          <button type="button" class="bonus-preset-chip" onclick="applyBonusPreset('Weekend Competition', 10, 'sat')">🏆 Weekend Competition (+10)</button>
+          <button type="button" class="bonus-preset-chip" onclick="applyBonusPreset('Open Mat / Extra Sparring', 1, 'sat')">🥋 Extra Sparring (+1)</button>
+          <button type="button" class="bonus-preset-chip" onclick="applyBonusPreset('36-Hr Fast Completed', 2, 'sun')">⚡ 36-Hr Fast (+2)</button>
+        </div>
+
+        <div class="bonus-form-row">
+          <input type="text" id="bonus-title-input" class="bonus-input" placeholder="Achievement (e.g. Competed in Tournament)" maxlength="48" onkeydown="if(event.key==='Enter'){event.preventDefault();saveBonusEntry();}" />
+          <input type="number" id="bonus-pts-input" class="bonus-input" min="1" max="20" value="2" title="Bonus Points" />
+          <select id="bonus-day-input" class="bonus-input">
+            <option value="">Any Day</option>
+            <option value="mon">Monday</option>
+            <option value="tue">Tuesday</option>
+            <option value="wed">Wednesday</option>
+            <option value="thu">Thursday</option>
+            <option value="fri">Friday</option>
+            <option value="sat" selected>Saturday</option>
+            <option value="sun">Sunday</option>
+          </select>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:8px;">
+          <button type="button" class="btn-secondary-action" style="padding:7px 12px; font-size:0.78rem;" onclick="toggleBonusForm(false)">Cancel</button>
+          <button type="button" class="btn-primary-action" style="padding:7px 14px; font-size:0.78rem;" onclick="saveBonusEntry()">Save Bonus</button>
+        </div>
+      </div>
+
+      <!-- Logged Bonus Pills -->
+      <div class="bonus-pills-list" id="bonus-pills-list">
+        <!-- Populated dynamically -->
+      </div>
     </div>
   </div>
 
@@ -1303,8 +1817,12 @@
         userGoals = idbGoals;
       }
 
-      // Try localStorage master store
+      // Check localStorage master stores (preserving weekly_discipline_v2 and weekly_goals_master_store)
       let storedMaster = safeStorageGet('weekly_goals_master_store', null);
+      const legacyV2 = safeStorageGet('weekly_discipline_v2', null);
+      if (!storedMaster && legacyV2 && typeof legacyV2 === 'object') {
+        storedMaster = legacyV2;
+      }
 
       if (!storedMaster) {
         storedMaster = {};
@@ -1331,6 +1849,7 @@
 
     async function persistMasterState() {
       safeStorageSet('weekly_goals_master_store', appState);
+      safeStorageSet('weekly_discipline_v2', appState);
       const currentWeekKey = formatWeekKey(currentWeekStart);
       if (appState[currentWeekKey]) {
         safeStorageSet(`wdt_week_${currentWeekKey}`, appState[currentWeekKey]);
@@ -1349,8 +1868,12 @@
             fri: { notes: '' },
             sat: { notes: '' },
             sun: { notes: '' }
-          }
+          },
+          bonuses: []
         };
+      }
+      if (!Array.isArray(appState[weekKey].bonuses)) {
+        appState[weekKey].bonuses = [];
       }
       return appState[weekKey];
     }
@@ -1373,15 +1896,19 @@
         });
       });
 
-      let totalPoints = 0;
+      let regularPoints = 0;
       userGoals.forEach(g => {
-        totalPoints += goalTotals[g.id];
+        regularPoints += goalTotals[g.id];
       });
+
+      const bonuses = Array.isArray(data.bonuses) ? data.bonuses : [];
+      const bonusPoints = bonuses.reduce((sum, b) => sum + (Number(b.points) || 0), 0);
+      const totalPoints = regularPoints + bonusPoints;
 
       const baseline = getBaselinePoints();
       const scoreOutOf10 = ((totalPoints / baseline) * 10).toFixed(1);
 
-      return { goalTotals, totalPoints, scoreOutOf10, baseline };
+      return { goalTotals, regularPoints, bonusPoints, bonuses, totalPoints, scoreOutOf10, baseline };
     }
 
     /* =========================================================================
@@ -1396,7 +1923,11 @@
       document.getElementById('hud-grade-val').textContent = stats.scoreOutOf10;
       
       const ptsDiff = stats.totalPoints - stats.baseline;
-      if (ptsDiff > 0) {
+      if (stats.bonusPoints > 0 && ptsDiff > 0) {
+        document.getElementById('hud-pts-val').textContent = `${stats.totalPoints} / ${stats.baseline} PTS (+${stats.bonusPoints} BONUS)`;
+      } else if (stats.bonusPoints > 0) {
+        document.getElementById('hud-pts-val').textContent = `${stats.totalPoints} / ${stats.baseline} PTS (INCL. +${stats.bonusPoints} BONUS)`;
+      } else if (ptsDiff > 0) {
         document.getElementById('hud-pts-val').textContent = `${stats.totalPoints} / ${stats.baseline} PTS (+${ptsDiff} BONUS)`;
       } else {
         document.getElementById('hud-pts-val').textContent = `${stats.totalPoints} / ${stats.baseline} PTS`;
@@ -1499,6 +2030,96 @@
 
         daysContainer.appendChild(card);
       });
+
+      renderBonusSection(stats);
+    }
+
+    function renderBonusSection(stats) {
+      const badge = document.getElementById('bonus-total-badge');
+      const list = document.getElementById('bonus-pills-list');
+      if (!badge || !list) return;
+
+      badge.textContent = `+${stats.bonusPoints} pt${stats.bonusPoints === 1 ? '' : 's'}`;
+      list.innerHTML = '';
+
+      if (stats.bonuses.length === 0) {
+        list.innerHTML = `<span style="font-size:0.76rem; color:var(--text-dim);">No bonus tasks logged this week. Add tournament competitions, extra sparring, or special challenges.</span>`;
+        return;
+      }
+
+      stats.bonuses.forEach(b => {
+        const pill = document.createElement('div');
+        pill.className = 'bonus-pill-item';
+        const dayTag = b.day ? `<span class="bonus-pill-day">${escapeHtml(b.day)}</span>` : '';
+        pill.innerHTML = `
+          <span class="bonus-pill-pts">+${Number(b.points) || 0}</span>
+          <span class="bonus-pill-title">${escapeHtml(b.title)}</span>
+          ${dayTag}
+          <button type="button" class="bonus-pill-del" title="Remove Bonus" onclick="deleteBonusEntry('${escapeHtml(b.id)}')">&times;</button>
+        `;
+        list.appendChild(pill);
+      });
+    }
+
+    function toggleBonusForm(forceState) {
+      const box = document.getElementById('bonus-form-box');
+      if (!box) return;
+      const shouldOpen = typeof forceState === 'boolean' ? forceState : !box.classList.contains('open');
+      box.classList.toggle('open', shouldOpen);
+      if (shouldOpen) {
+        const input = document.getElementById('bonus-title-input');
+        if (input) input.focus();
+      }
+    }
+
+    function applyBonusPreset(title, points, day) {
+      document.getElementById('bonus-title-input').value = title;
+      document.getElementById('bonus-pts-input').value = points;
+      document.getElementById('bonus-day-input').value = day || '';
+      document.getElementById('bonus-title-input').focus();
+    }
+
+    function saveBonusEntry() {
+      const titleEl = document.getElementById('bonus-title-input');
+      const ptsEl = document.getElementById('bonus-pts-input');
+      const dayEl = document.getElementById('bonus-day-input');
+
+      const title = (titleEl.value || '').trim();
+      const points = Math.max(1, Math.min(50, parseInt(ptsEl.value, 10) || 1));
+      const day = dayEl.value || '';
+
+      if (!title) {
+        showToast('Enter a bonus task description');
+        titleEl.focus();
+        return;
+      }
+
+      const weekKey = formatWeekKey(currentWeekStart);
+      const data = getWeekData(weekKey);
+      data.bonuses.push({
+        id: 'bonus_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6),
+        title,
+        points,
+        day
+      });
+
+      titleEl.value = '';
+      ptsEl.value = '2';
+      toggleBonusForm(false);
+
+      persistMasterState();
+      renderApp();
+      showToast(`+${points} bonus pts added`);
+    }
+
+    function deleteBonusEntry(bonusId) {
+      const weekKey = formatWeekKey(currentWeekStart);
+      const data = getWeekData(weekKey);
+      data.bonuses = data.bonuses.filter(b => b.id !== bonusId);
+
+      persistMasterState();
+      renderApp();
+      showToast('Bonus entry removed');
     }
 
     function escapeHtml(str) {
@@ -1819,7 +2440,12 @@
       ctx.fillStyle = '#64748b';
       ctx.font = '600 20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace';
       const ptsDiff = stats.totalPoints - stats.baseline;
-      const ptsSub = ptsDiff > 0 ? `+${ptsDiff} BONUS POINTS` : `${stats.baseline} PT BASELINE`;
+      let ptsSub = `${stats.baseline} PT BASELINE`;
+      if (stats.bonusPoints > 0) {
+        ptsSub = `INCL. +${stats.bonusPoints} BONUS PTS`;
+      } else if (ptsDiff > 0) {
+        ptsSub = `+${ptsDiff} BONUS POINTS`;
+      }
       ctx.fillText(ptsSub, 734, heroY + 295);
 
       // 6. Section Header
@@ -1834,11 +2460,12 @@
       ctx.font = '600 20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace';
       ctx.fillText('WEEKLY LOG', W - 74, pillarsY);
 
-      // 7. Dynamic Goals Rendering
+      // 7. Dynamic Goals Rendering (+ Bonus Banner if present)
       const startY = 890;
-      const count = Math.min(userGoals.length, 5); // display up to 5 on video card cleanly
-      const cardH = count <= 4 ? 146 : 116;
-      const gapY = count <= 4 ? 20 : 14;
+      const hasBonus = stats.bonusPoints > 0;
+      const count = Math.min(userGoals.length, 5);
+      const cardH = hasBonus ? (count <= 4 ? 124 : 102) : (count <= 4 ? 146 : 116);
+      const gapY = hasBonus ? 14 : (count <= 4 ? 20 : 14);
 
       for (let idx = 0; idx < count; idx++) {
         const g = userGoals[idx];
@@ -1853,7 +2480,7 @@
         ctx.stroke();
 
         // Icon Pill / Badge
-        const pillW = cardH <= 120 ? 64 : 76;
+        const pillW = cardH <= 125 ? 62 : 76;
         drawRoundRect(ctx, 96, py + (cardH - pillW)/2, pillW, pillW, 14);
         ctx.fillStyle = 'rgba(30, 41, 59, 0.85)';
         ctx.fill();
@@ -1870,26 +2497,26 @@
         // Titles
         ctx.textAlign = 'left';
         ctx.fillStyle = '#ffffff';
-        ctx.font = count <= 4 ? '700 28px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' : '700 24px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-        ctx.fillText(g.name.toUpperCase(), 194, py + (cardH <= 120 ? 46 : 56));
+        ctx.font = cardH <= 125 ? '700 25px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' : '700 28px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+        ctx.fillText(g.name.toUpperCase(), 194, py + (cardH <= 125 ? 46 : 56));
 
         ctx.fillStyle = '#64748b';
         ctx.font = '600 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace';
-        ctx.fillText((g.sub || 'GOAL').toUpperCase(), 194, py + (cardH <= 120 ? 76 : 88));
+        ctx.fillText((g.sub || 'GOAL').toUpperCase(), 194, py + (cardH <= 125 ? 76 : 88));
 
         // Score
         ctx.textAlign = 'right';
-        ctx.font = count <= 4 ? '800 42px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace' : '800 36px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace';
+        ctx.font = cardH <= 125 ? '800 38px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace' : '800 42px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace';
         ctx.fillStyle = pts >= g.target ? accent : '#ffffff';
-        ctx.fillText(`${pts}`, W - 176, py + (cardH <= 120 ? 56 : 66));
+        ctx.fillText(`${pts}`, W - 176, py + (cardH <= 125 ? 56 : 66));
 
         ctx.font = '600 24px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace';
         ctx.fillStyle = '#64748b';
-        ctx.fillText(`/${g.target}`, W - 110, py + (cardH <= 120 ? 56 : 66));
+        ctx.fillText(`/${g.target}`, W - 110, py + (cardH <= 125 ? 56 : 66));
 
         // Progress Bar
         const barX = 194;
-        const barY = py + (cardH <= 120 ? 94 : 108);
+        const barY = py + (cardH <= 125 ? 94 : 108);
         const barW = W - 148 - 226;
         const barH = 10;
 
@@ -1907,6 +2534,34 @@
           ctx.fillStyle = barGrad;
           ctx.fill();
         }
+      }
+
+      // Dedicated Bonus Points Highlight Card on Video Graphic
+      if (hasBonus) {
+        const bonusY = startY + count * (cardH + gapY) + 6;
+        const bonusH = 118;
+        drawRoundRect(ctx, 74, bonusY, W - 148, bonusH, 20);
+        ctx.fillStyle = hexToRgba(accent, 0.14);
+        ctx.fill();
+        ctx.strokeStyle = accent;
+        ctx.lineWidth = 2.2;
+        ctx.stroke();
+
+        ctx.textAlign = 'left';
+        ctx.fillStyle = accent;
+        ctx.font = '800 20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace';
+        ctx.fillText('BONUS ACHIEVEMENTS', 106, bonusY + 46);
+
+        const bonusTitles = stats.bonuses.map(b => `${b.title} (+${b.points})`).join(' • ');
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '700 22px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+        const clippedTitles = bonusTitles.length > 46 ? bonusTitles.substring(0, 44) + '…' : bonusTitles;
+        ctx.fillText(clippedTitles.toUpperCase(), 106, bonusY + 84);
+
+        ctx.textAlign = 'right';
+        ctx.fillStyle = accent;
+        ctx.font = '900 42px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace';
+        ctx.fillText(`+${stats.bonusPoints}`, W - 106, bonusY + 72);
       }
 
       // 8. Clean Balanced Footer
@@ -2060,6 +2715,13 @@
         lines.push(`• ${g.name}: ${stats.goalTotals[g.id] || 0} / ${g.target} pts`);
       });
 
+      if (stats.bonuses.length > 0) {
+        lines.push(`\nBonus Points (+${stats.bonusPoints} pts):`);
+        stats.bonuses.forEach(b => {
+          lines.push(`★ ${b.title}: +${b.points} pts`);
+        });
+      }
+
       copyToClipboard(lines.join('\n'));
     }
 
@@ -2101,6 +2763,561 @@
     }
 
     /* =========================================================================
+       TRENDS & MULTI-MONTH LINE GRAPH ENGINE
+       ========================================================================= */
+    const SERIES_PALETTE = [
+      '#10b981', // Emerald Green
+      '#38bdf8', // Electric Sky
+      '#f59e0b', // Amber Gold
+      '#f43f5e', // Crimson Red
+      '#a855f7', // Purple Belt
+      '#ec4899', // Magenta
+      '#14b8a6'  // Teal
+    ];
+
+    let isTrendsOpen = false;
+    let trendsTimeframe = '12'; // '4', '12', '26', 'ALL'
+    let activeTrendSeries = new Set(); // Goal IDs + optional 'bonus_pts' & 'grade_10'
+    let trendsSeriesInitialized = false;
+    let cachedChartTimeline = [];
+    let cachedChartGeometry = null;
+    let hoveredWeekIndex = -1;
+
+    function toggleTrendsView() {
+      isTrendsOpen = !isTrendsOpen;
+      const btn = document.getElementById('trends-toggle-btn');
+      const trendsPanel = document.getElementById('trends-panel');
+      const weekNav = document.getElementById('tracker-week-nav');
+      const scoreHud = document.getElementById('tracker-score-hud');
+      const daysContainer = document.getElementById('days-container');
+      const bonusCard = document.getElementById('bonus-section-card');
+
+      btn.classList.toggle('active', isTrendsOpen);
+
+      if (isTrendsOpen) {
+        trendsPanel.classList.add('active');
+        weekNav.style.display = 'none';
+        scoreHud.style.display = 'none';
+        daysContainer.style.display = 'none';
+        if (bonusCard) bonusCard.style.display = 'none';
+        initTrendSeriesSelection();
+        renderTrendsView();
+      } else {
+        trendsPanel.classList.remove('active');
+        weekNav.style.display = 'flex';
+        scoreHud.style.display = 'grid';
+        daysContainer.style.display = 'flex';
+        if (bonusCard) bonusCard.style.display = 'flex';
+        renderApp();
+      }
+    }
+
+    function initTrendSeriesSelection() {
+      if (!trendsSeriesInitialized) {
+        userGoals.forEach(g => activeTrendSeries.add(g.id));
+        activeTrendSeries.add('bonus_pts');
+        trendsSeriesInitialized = true;
+      } else {
+        // Ensure any newly created goals are visible
+        userGoals.forEach(g => {
+          if (!activeTrendSeries.has(g.id) && activeTrendSeries.size === 0) {
+            activeTrendSeries.add(g.id);
+          }
+        });
+      }
+    }
+
+    function setTrendsTimeframe(tf) {
+      trendsTimeframe = tf;
+      hoveredWeekIndex = -1;
+      hideChartTooltip();
+      document.querySelectorAll('.tf-pill').forEach(el => {
+        el.classList.toggle('active', el.getAttribute('data-tf') === tf);
+      });
+      renderTrendsView();
+    }
+
+    function toggleMetricSeries(seriesId, e) {
+      // Double-click or long-press isolates a single series; normal click toggles it
+      if (e && e.detail === 2) {
+        activeTrendSeries.clear();
+        activeTrendSeries.add(seriesId);
+      } else {
+        if (activeTrendSeries.has(seriesId)) {
+          if (activeTrendSeries.size > 1) {
+            activeTrendSeries.delete(seriesId);
+          } else {
+            // If clicking the only active one, restore all goals
+            userGoals.forEach(g => activeTrendSeries.add(g.id));
+          }
+        } else {
+          activeTrendSeries.add(seriesId);
+        }
+      }
+      renderTrendsView();
+    }
+
+    function getSeriesColor(index, seriesId) {
+      if (seriesId === 'grade_10') return '#ffffff';
+      if (seriesId === 'bonus_pts') return '#facc15';
+      return SERIES_PALETTE[index % SERIES_PALETTE.length];
+    }
+
+    function buildChronologicalTimeline() {
+      const currentMon = getMonday(new Date());
+      const currentKey = formatWeekKey(currentMon);
+
+      // Gather all recorded week keys + current week
+      const keySet = new Set(Object.keys(appState));
+      keySet.add(currentKey);
+
+      const sortedKeys = Array.from(keySet)
+        .filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k))
+        .sort();
+
+      const earliestStr = sortedKeys[0] || currentKey;
+      const parts = earliestStr.split('-').map(Number);
+      let cursor = new Date(parts[0], parts[1] - 1, parts[2]);
+      cursor.setHours(0, 0, 0, 0);
+
+      // Build continuous weekly timeline from earliest logged week up to current week
+      const allWeeks = [];
+      let safety = 0;
+      while (cursor.getTime() <= currentMon.getTime() && safety < 260) {
+        const wkKey = formatWeekKey(cursor);
+        const stats = computeWeekStats(wkKey);
+        const shortLabel = cursor.toLocaleDateString('default', { month: 'short', day: 'numeric' });
+        const fullLabel = formatWeekDisplayLabel(cursor);
+
+        allWeeks.push({
+          weekKey: wkKey,
+          shortLabel,
+          fullLabel,
+          goalTotals: stats.goalTotals,
+          bonusPoints: stats.bonusPoints,
+          totalPoints: stats.totalPoints,
+          scoreOutOf10: parseFloat(stats.scoreOutOf10),
+          baseline: stats.baseline
+        });
+
+        cursor.setDate(cursor.getDate() + 7);
+        safety++;
+      }
+
+      // If user has fewer weeks than the selected timeframe window, pad backwards with context weeks
+      const minWindow = trendsTimeframe === 'ALL' ? allWeeks.length : parseInt(trendsTimeframe, 10);
+      while (allWeeks.length < minWindow) {
+        const firstParts = allWeeks[0].weekKey.split('-').map(Number);
+        const prevMon = new Date(firstParts[0], firstParts[1] - 1, firstParts[2] - 7);
+        const wkKey = formatWeekKey(prevMon);
+        const stats = computeWeekStats(wkKey);
+        allWeeks.unshift({
+          weekKey: wkKey,
+          shortLabel: prevMon.toLocaleDateString('default', { month: 'short', day: 'numeric' }),
+          fullLabel: formatWeekDisplayLabel(prevMon),
+          goalTotals: stats.goalTotals,
+          bonusPoints: stats.bonusPoints,
+          totalPoints: stats.totalPoints,
+          scoreOutOf10: parseFloat(stats.scoreOutOf10),
+          baseline: stats.baseline
+        });
+      }
+
+      if (trendsTimeframe !== 'ALL') {
+        const limit = parseInt(trendsTimeframe, 10);
+        return allWeeks.slice(-limit);
+      }
+
+      return allWeeks;
+    }
+
+    function renderTrendsView() {
+      const timeline = buildChronologicalTimeline();
+      cachedChartTimeline = timeline;
+
+      // 1. Render Metric Filter Pills
+      const pillsRow = document.getElementById('trends-metric-pills');
+      pillsRow.innerHTML = '';
+
+      userGoals.forEach((g, idx) => {
+        const color = getSeriesColor(idx, g.id);
+        const isActive = activeTrendSeries.has(g.id);
+        const pill = document.createElement('button');
+        pill.type = 'button';
+        pill.className = `metric-pill ${isActive ? 'active' : ''}`;
+        pill.style.setProperty('--pill-color', color);
+        pill.onclick = (e) => toggleMetricSeries(g.id, e);
+        pill.innerHTML = `<span class="metric-dot"></span><span>${escapeHtml(g.name)}</span>`;
+        pillsRow.appendChild(pill);
+      });
+
+      // Bonus Points Toggle Pill
+      const bonusActive = activeTrendSeries.has('bonus_pts');
+      const bonusPill = document.createElement('button');
+      bonusPill.type = 'button';
+      bonusPill.className = `metric-pill ${bonusActive ? 'active' : ''}`;
+      bonusPill.style.setProperty('--pill-color', '#facc15');
+      bonusPill.onclick = (e) => toggleMetricSeries('bonus_pts', e);
+      bonusPill.innerHTML = `<span class="metric-dot"></span><span>Bonus Pts</span>`;
+      pillsRow.appendChild(bonusPill);
+
+      // Overall /10 Grade Toggle Pill
+      const gradeActive = activeTrendSeries.has('grade_10');
+      const gradePill = document.createElement('button');
+      gradePill.type = 'button';
+      gradePill.className = `metric-pill ${gradeActive ? 'active' : ''}`;
+      gradePill.style.setProperty('--pill-color', '#ffffff');
+      gradePill.onclick = (e) => toggleMetricSeries('grade_10', e);
+      gradePill.innerHTML = `<span class="metric-dot"></span><span>Grade (/10)</span>`;
+      pillsRow.appendChild(gradePill);
+
+      // 2. Render Summary Strip (Averages, Best Week, Streak)
+      renderTrendsSummary(timeline);
+
+      // 3. Draw High-DPI Line Graph
+      drawTrendsCanvas(timeline);
+    }
+
+    function renderTrendsSummary(timeline) {
+      const grid = document.getElementById('trends-summary-grid');
+      grid.innerHTML = '';
+
+      // Only compute averages across weeks that have activity (or the current week)
+      const activeWeeks = timeline.filter(w => w.totalPoints > 0 || w.weekKey === formatWeekKey(getMonday(new Date())));
+      const sample = activeWeeks.length > 0 ? activeWeeks : timeline;
+
+      userGoals.forEach((g, idx) => {
+        const color = getSeriesColor(idx, g.id);
+        const vals = sample.map(w => w.goalTotals[g.id] || 0);
+        const sum = vals.reduce((a, b) => a + b, 0);
+        const avg = (sum / sample.length).toFixed(1);
+        const best = Math.max(...vals, 0);
+
+        // Calculate consecutive weeks hitting target (from most recent backwards)
+        let streak = 0;
+        for (let i = timeline.length - 1; i >= 0; i--) {
+          if ((timeline[i].goalTotals[g.id] || 0) >= g.target) {
+            streak++;
+          } else {
+            break;
+          }
+        }
+
+        const box = document.createElement('div');
+        box.className = 'trend-stat-box';
+        box.style.setProperty('--stat-color', color);
+        box.innerHTML = `
+          <div class="ts-title">${escapeHtml(g.name)}</div>
+          <div class="ts-main">${avg} <span style="font-size:0.72rem; color:var(--text-dim); font-weight:600;">avg/wk</span></div>
+          <div class="ts-sub">Best: ${best} pts • Streak: ${streak}w</div>
+        `;
+        grid.appendChild(box);
+      });
+
+      // Bonus Points Summary Box
+      const bonusVals = sample.map(w => w.bonusPoints || 0);
+      const totalBonusAll = timeline.reduce((a, b) => a + (b.bonusPoints || 0), 0);
+      const bestBonus = Math.max(...bonusVals, 0);
+      const bonusBox = document.createElement('div');
+      bonusBox.className = 'trend-stat-box';
+      bonusBox.style.setProperty('--stat-color', '#facc15');
+      bonusBox.innerHTML = `
+        <div class="ts-title">Bonus Points</div>
+        <div class="ts-main">+${totalBonusAll} <span style="font-size:0.72rem; color:var(--text-dim); font-weight:600;">total</span></div>
+        <div class="ts-sub">Best Week: +${bestBonus} pts</div>
+      `;
+      grid.appendChild(bonusBox);
+    }
+
+    function drawTrendsCanvas(timeline) {
+      const canvas = document.getElementById('trends-canvas');
+      const wrapper = document.getElementById('chart-wrapper');
+      if (!canvas || !wrapper) return;
+
+      const rect = wrapper.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 3);
+      const W = Math.max(rect.width, 280);
+      const H = Math.max(rect.height, 260);
+
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+
+      const ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+
+      // Clear background
+      ctx.clearRect(0, 0, W, H);
+
+      const padLeft = 38;
+      const padRight = 18;
+      const padTop = 24;
+      const padBottom = 34;
+      const plotW = W - padLeft - padRight;
+      const plotH = H - padTop - padBottom;
+
+      // Build list of active series
+      const seriesList = [];
+      userGoals.forEach((g, idx) => {
+        if (activeTrendSeries.has(g.id)) {
+          seriesList.push({
+            id: g.id,
+            name: g.name,
+            color: getSeriesColor(idx, g.id),
+            values: timeline.map(w => w.goalTotals[g.id] || 0)
+          });
+        }
+      });
+
+      if (activeTrendSeries.has('bonus_pts')) {
+        seriesList.push({
+          id: 'bonus_pts',
+          name: 'Bonus Pts',
+          color: '#facc15',
+          values: timeline.map(w => w.bonusPoints || 0)
+        });
+      }
+
+      if (activeTrendSeries.has('grade_10')) {
+        seriesList.push({
+          id: 'grade_10',
+          name: 'Grade (/10)',
+          color: '#ffffff',
+          values: timeline.map(w => w.scoreOutOf10)
+        });
+      }
+
+      // Compute Y-axis max cleanly
+      let maxVal = 5;
+      seriesList.forEach(s => {
+        s.values.forEach(v => {
+          if (v > maxVal) maxVal = v;
+        });
+      });
+      if (activeTrendSeries.has('grade_10') && maxVal < 10) maxVal = 10;
+      const yMax = Math.ceil(maxVal + (maxVal >= 10 ? 1 : 0));
+      const ySteps = Math.min(yMax, 6);
+
+      // Store geometry for touch/mouse crosshair lookup
+      cachedChartGeometry = {
+        padLeft,
+        padRight,
+        padTop,
+        padBottom,
+        plotW,
+        plotH,
+        yMax,
+        count: timeline.length,
+        seriesList
+      };
+
+      // Draw Horizontal Gridlines & Y-Axis Labels
+      ctx.textAlign = 'right';
+      ctx.textBaseline = 'middle';
+      ctx.font = '600 11px ui-monospace, SFMono-Regular, Menlo, monospace';
+
+      for (let i = 0; i <= ySteps; i++) {
+        const val = (yMax / ySteps) * i;
+        const y = padTop + plotH - (val / yMax) * plotH;
+
+        ctx.strokeStyle = i === 0 ? 'rgba(148, 163, 184, 0.25)' : 'rgba(148, 163, 184, 0.08)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(padLeft, y);
+        ctx.lineTo(padLeft + plotW, y);
+        ctx.stroke();
+
+        ctx.fillStyle = '#64748b';
+        ctx.fillText(Number.isInteger(val) ? String(val) : val.toFixed(1), padLeft - 8, y);
+      }
+
+      // X-Axis Coordinate Helper
+      const getX = (idx) => {
+        if (timeline.length <= 1) return padLeft + plotW / 2;
+        return padLeft + (idx / (timeline.length - 1)) * plotW;
+      };
+      const getY = (val) => {
+        return padTop + plotH - (val / yMax) * plotH;
+      };
+
+      // Draw X-Axis Date Labels (spaced nicely so they never overlap)
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillStyle = '#64748b';
+      ctx.font = '600 10px ui-monospace, SFMono-Regular, Menlo, monospace';
+
+      const maxLabels = Math.max(3, Math.floor(plotW / 58));
+      const labelStep = Math.max(1, Math.ceil(timeline.length / maxLabels));
+
+      timeline.forEach((w, idx) => {
+        if (idx % labelStep === 0 || idx === timeline.length - 1) {
+          // Avoid collision right before the last label
+          if (idx !== timeline.length - 1 && timeline.length - 1 - idx < labelStep * 0.6) return;
+          const x = getX(idx);
+          ctx.fillText(w.shortLabel, x, padTop + plotH + 10);
+        }
+      });
+
+      // Draw Hovered Vertical Crosshair Guide
+      if (hoveredWeekIndex >= 0 && hoveredWeekIndex < timeline.length) {
+        const hx = getX(hoveredWeekIndex);
+        ctx.save();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.28)';
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.moveTo(hx, padTop);
+        ctx.lineTo(hx, padTop + plotH);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // Draw Each Metric Line + Translucent Gradient Fill
+      seriesList.forEach(series => {
+        const pts = series.values.map((v, idx) => ({
+          x: getX(idx),
+          y: getY(v),
+          val: v
+        }));
+
+        if (pts.length === 0) return;
+
+        // Subtle gradient fill under line (stronger when 1-2 series isolated)
+        const fillAlpha = seriesList.length === 1 ? 0.22 : 0.07;
+        const grad = ctx.createLinearGradient(0, padTop, 0, padTop + plotH);
+        grad.addColorStop(0, hexToRgba(series.color, fillAlpha));
+        grad.addColorStop(1, hexToRgba(series.color, 0.0));
+
+        ctx.beginPath();
+        ctx.moveTo(pts[0].x, padTop + plotH);
+        pts.forEach(p => ctx.lineTo(p.x, p.y));
+        ctx.lineTo(pts[pts.length - 1].x, padTop + plotH);
+        ctx.closePath();
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        // Crisp Line Stroke
+        ctx.beginPath();
+        pts.forEach((p, idx) => {
+          if (idx === 0) ctx.moveTo(p.x, p.y);
+          else ctx.lineTo(p.x, p.y);
+        });
+        ctx.strokeStyle = series.color;
+        ctx.lineWidth = seriesList.length === 1 ? 3 : 2.3;
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.stroke();
+
+        // Data Point Nodes
+        pts.forEach((p, idx) => {
+          const isHovered = idx === hoveredWeekIndex;
+          const radius = isHovered ? 5.5 : (timeline.length <= 16 ? 3 : 2);
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+          ctx.fillStyle = isHovered ? '#ffffff' : series.color;
+          ctx.fill();
+          if (isHovered) {
+            ctx.strokeStyle = series.color;
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
+          }
+        });
+      });
+    }
+
+    function handleChartPointer(clientX) {
+      if (!cachedChartGeometry || cachedChartTimeline.length === 0) return;
+      const canvas = document.getElementById('trends-canvas');
+      const rect = canvas.getBoundingClientRect();
+      const relX = clientX - rect.left;
+
+      const { padLeft, plotW, count } = cachedChartGeometry;
+      if (count <= 1) {
+        hoveredWeekIndex = 0;
+      } else {
+        const clampedX = Math.max(padLeft, Math.min(padLeft + plotW, relX));
+        const ratio = (clampedX - padLeft) / plotW;
+        hoveredWeekIndex = Math.round(ratio * (count - 1));
+      }
+
+      drawTrendsCanvas(cachedChartTimeline);
+      updateChartTooltip(hoveredWeekIndex, rect.width);
+    }
+
+    function updateChartTooltip(weekIdx, containerWidth) {
+      const tooltip = document.getElementById('chart-tooltip');
+      if (weekIdx < 0 || weekIdx >= cachedChartTimeline.length || !cachedChartGeometry) {
+        hideChartTooltip();
+        return;
+      }
+
+      const weekObj = cachedChartTimeline[weekIdx];
+      const { padLeft, plotW, count, seriesList } = cachedChartGeometry;
+      const pointX = count <= 1 ? padLeft + plotW / 2 : padLeft + (weekIdx / (count - 1)) * plotW;
+
+      let rowsHtml = `<div class="tt-week">${escapeHtml(weekObj.fullLabel)}</div>`;
+      seriesList.forEach(s => {
+        const val = s.values[weekIdx];
+        const suffix = s.id === 'grade_10' ? ' / 10' : ' pts';
+        rowsHtml += `
+          <div class="tt-row">
+            <span class="tt-label"><span class="metric-dot" style="background:${s.color};"></span>${escapeHtml(s.name)}</span>
+            <span class="tt-val">${val}${suffix}</span>
+          </div>
+        `;
+      });
+
+      tooltip.innerHTML = rowsHtml;
+      tooltip.classList.add('visible');
+
+      // Flip tooltip left/right so it never clips off the edge
+      if (pointX > containerWidth * 0.55) {
+        tooltip.style.left = 'auto';
+        tooltip.style.right = '12px';
+      } else {
+        tooltip.style.right = 'auto';
+        tooltip.style.left = '12px';
+      }
+    }
+
+    function hideChartTooltip() {
+      const tooltip = document.getElementById('chart-tooltip');
+      if (tooltip) tooltip.classList.remove('visible');
+    }
+
+    function setupChartInteractions() {
+      const canvas = document.getElementById('trends-canvas');
+      if (!canvas) return;
+
+      canvas.addEventListener('mousemove', (e) => {
+        handleChartPointer(e.clientX);
+      });
+
+      canvas.addEventListener('mouseleave', () => {
+        hoveredWeekIndex = -1;
+        hideChartTooltip();
+        if (isTrendsOpen) drawTrendsCanvas(cachedChartTimeline);
+      });
+
+      canvas.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches.length > 0) {
+          handleChartPointer(e.touches[0].clientX);
+        }
+      }, { passive: true });
+
+      canvas.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches.length > 0) {
+          handleChartPointer(e.touches[0].clientX);
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        if (isTrendsOpen) {
+          drawTrendsCanvas(cachedChartTimeline);
+        }
+      });
+    }
+
+    /* =========================================================================
        INITIALIZATION
        ========================================================================= */
     window.addEventListener('DOMContentLoaded', async () => {
@@ -2111,6 +3328,7 @@
       const savedTheme = safeStorageGet('wdt_theme', 'emerald');
       setTheme(savedTheme);
 
+      setupChartInteractions();
       renderApp();
     });
   </script>
